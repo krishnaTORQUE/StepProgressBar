@@ -1,0 +1,67 @@
+/*
+ * Main
+ */
+.stepProg{
+    width: 99%;
+    margin: 5px auto;
+    display: block;
+    clear: both;
+    text-align: center;
+    color: #666;
+    counter-reset: step;
+}
+
+.stepProg li{
+    width: 24%;
+    list-style-type: none;
+    float: left;
+    position: relative;
+}
+
+/*
+ * Circle Content
+ */
+.stepProg li:before{
+    content: counter(step);
+    counter-increment: step;
+    display: block;
+    border-radius: 1.1em;
+    text-align: center;
+    margin: 0 auto;
+    z-index: 2;
+    width: 30px;
+    height: 30px;
+    background-color: #fff;
+    border: 3px solid #aaa; 
+    line-height: 30px;
+}
+
+/*
+ * Progress Bar
+ */
+.stepProg li:after{
+    content: '';
+    position: absolute;
+    width: 100%;    
+    left: -50%;
+    z-index: -1;
+    border-top:4px solid #aaa;
+    top: 16px;
+}
+
+.stepProg li:first-child:after{
+    content: none;
+}
+
+/*
+ * Complete Step
+ */
+.stepProg .stepProg_act::before,
+.stepProg_act + li::after{
+    color: #099416;
+    border-color: #099416;
+}
+
+.stepProg li.stepProg_act:before{
+    background-color: #f9fefa;
+}
